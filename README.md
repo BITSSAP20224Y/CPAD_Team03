@@ -2,4 +2,4 @@
 
 
 
-Habit & Mood Tracker with AI siggestions
+Habit & Mood Tracker with AI suggestions
