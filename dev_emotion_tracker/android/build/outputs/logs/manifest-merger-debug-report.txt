@@ -1,0 +1,16 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/I527870/Bits/CPAD_Team03/dev_emotion_tracker/android/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest13231193887325493086.xml:2:13-83
+INJECTED from /Users/I527870/Bits/CPAD_Team03/dev_emotion_tracker/android/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest13231193887325493086.xml:2:13-83
+	package
+		INJECTED from /Users/I527870/Bits/CPAD_Team03/dev_emotion_tracker/android/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest13231193887325493086.xml
+	xmlns:android
+		ADDED from /Users/I527870/Bits/CPAD_Team03/dev_emotion_tracker/android/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest13231193887325493086.xml:2:23-81
+uses-sdk
+INJECTED from /Users/I527870/Bits/CPAD_Team03/dev_emotion_tracker/android/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest13231193887325493086.xml reason: use-sdk injection requested
+INJECTED from /Users/I527870/Bits/CPAD_Team03/dev_emotion_tracker/android/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest13231193887325493086.xml
+INJECTED from /Users/I527870/Bits/CPAD_Team03/dev_emotion_tracker/android/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest13231193887325493086.xml
+	android:targetSdkVersion
+		INJECTED from /Users/I527870/Bits/CPAD_Team03/dev_emotion_tracker/android/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest13231193887325493086.xml
+	android:minSdkVersion
+		INJECTED from /Users/I527870/Bits/CPAD_Team03/dev_emotion_tracker/android/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest13231193887325493086.xml

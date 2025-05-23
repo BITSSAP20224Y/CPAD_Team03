@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "282405254061",
+    "project_id": "cpadteam03",
+    "storage_bucket": "cpadteam03.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:282405254061:android:329f3c9a431ed585f8a724",
+        "android_client_info": {
+          "package_name": "com.example.dev_emotion_tracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAo1nTdQhLhnTIIMQZg32sKgyrlzqVCtUE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:282405254061:android:2e0cd79572d98934f8a724",
+        "android_client_info": {
+          "package_name": "com.example.mood_habit_tracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAo1nTdQhLhnTIIMQZg32sKgyrlzqVCtUE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
