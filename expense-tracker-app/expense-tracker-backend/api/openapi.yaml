@@ -1,0 +1,312 @@
+openapi: 3.0.3
+info:
+  description: "A simple API to track personal expenses, categorized by type and summarized\
+    \ by month."
+  title: Expense Tracker API
+  version: 1.1.0
+servers:
+- url: http://localhost:3000/api
+paths:
+  /expenses:
+    get:
+      operationId: expensesGET
+      parameters:
+      - explode: true
+        in: query
+        name: category
+        required: false
+        schema:
+          example: Food
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          example: 2025-05-01
+          format: date
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          example: 2025-05-31
+          format: date
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          example: 10
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          example: 0
+          minimum: 0
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Expense'
+                type: array
+          description: A list of expenses
+      summary: Get a list of expenses
+      x-eov-operation-handler: controllers/DefaultController
+    post:
+      operationId: expensesPOST
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewExpense'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Expense'
+          description: Expense created successfully
+      summary: Add a new expense
+      x-eov-operation-handler: controllers/DefaultController
+  /expenses/{id}:
+    delete:
+      operationId: expensesIdDELETE
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Expense deleted successfully
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_expenses__id__get_404_response'
+          description: Resource not found
+      summary: Delete an expense
+      x-eov-operation-handler: controllers/DefaultController
+    get:
+      operationId: expensesIdGET
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Expense'
+          description: The requested expense
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_expenses__id__get_404_response'
+          description: Resource not found
+      summary: Get a specific expense
+      x-eov-operation-handler: controllers/DefaultController
+  /summary:
+    get:
+      operationId: summaryGET
+      parameters:
+      - explode: true
+        in: query
+        name: month
+        required: true
+        schema:
+          example: 2025-05
+          pattern: "^\\d{4}-(0[1-9]|1[0-2])$"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Summary'
+          description: Expense summary
+      summary: Get monthly expense summary
+      x-eov-operation-handler: controllers/DefaultController
+components:
+  parameters:
+    id:
+      explode: false
+      in: path
+      name: id
+      required: true
+      schema:
+        type: string
+      style: simple
+    category:
+      explode: true
+      in: query
+      name: category
+      required: false
+      schema:
+        example: Food
+        type: string
+      style: form
+    fromDate:
+      explode: true
+      in: query
+      name: from
+      required: false
+      schema:
+        example: 2025-05-01
+        format: date
+        type: string
+      style: form
+    toDate:
+      explode: true
+      in: query
+      name: to
+      required: false
+      schema:
+        example: 2025-05-31
+        format: date
+        type: string
+      style: form
+    limit:
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        example: 10
+        maximum: 100
+        minimum: 1
+        type: integer
+      style: form
+    offset:
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        example: 0
+        minimum: 0
+        type: integer
+      style: form
+  responses:
+    NotFound:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/_expenses__id__get_404_response'
+      description: Resource not found
+    ExpenseCreated:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Expense'
+      description: Expense created successfully
+  schemas:
+    Expense:
+      example:
+        date: 2025-05-21
+        createdAt: 2025-05-21T12:34:56Z
+        amount: 129.99
+        description: Uber ride to airport
+        id: abc123
+        category: Transportation
+      properties:
+        id:
+          example: abc123
+          type: string
+        amount:
+          example: 129.99
+          format: float
+          minimum: 0
+          type: number
+        category:
+          example: Transportation
+          type: string
+        description:
+          example: Uber ride to airport
+          type: string
+        date:
+          example: 2025-05-21
+          format: date
+          type: string
+        createdAt:
+          example: 2025-05-21T12:34:56Z
+          format: date-time
+          type: string
+      type: object
+    NewExpense:
+      example:
+        date: 2000-01-23
+        amount: 0.08008282
+        description: description
+        category: category
+      properties:
+        amount:
+          format: float
+          minimum: 0
+          type: number
+        category:
+          type: string
+        description:
+          type: string
+        date:
+          format: date
+          type: string
+      required:
+      - amount
+      - category
+      - date
+      type: object
+    Summary:
+      example:
+        total: 756.23
+        categoryBreakdown:
+          Food: 120.0
+          Transport: 90.0
+          Bills: 546.23
+      properties:
+        total:
+          example: 756.23
+          type: number
+        categoryBreakdown:
+          additionalProperties:
+            type: number
+          example:
+            Food: 120.0
+            Transport: 90.0
+            Bills: 546.23
+          type: object
+      type: object
+    _expenses__id__get_404_response:
+      example:
+        message: Not found
+      properties:
+        message:
+          example: Not found
+          type: string
+      type: object
