@@ -2,5 +2,5 @@
 
 
 
-Part 1: Habit & Mood Tracker using Machine Learning \n
+Part 1: Habit & Mood Tracker using Machine Learning <br>
 Part 2: Expense Tracker Application
